@@ -1,0 +1,26 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanJHiggins/Battleship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordanJHiggins/Battleship/issues"
+  },
+  "homepage": "https://github.com/JordanJHiggins/Battleship#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2",
+    "webpack-cli": "^5.0.1"
+  }
+}
