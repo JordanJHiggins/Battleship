@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   "homepage": "https://github.com/JordanJHiggins/Battleship#readme",
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.2",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
   }
 }
