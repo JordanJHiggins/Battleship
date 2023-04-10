@@ -1,9 +1,19 @@
-export default const shipFactory = (name, length) => {
-  const hit = () => {};
+const Ship = (name, length) => {
+  let totalHits = 0;
+
+  const hit = () => {
+    totalHits += 1;
+    return totalHits;
+  };
+
   const isSunk = () => {};
-  return { name, length };
+
+  return { name, length, hit, totalHits };
 };
 
-const carrier = shipFactory('carrier', 2);
+const carrier = Ship('carrier', 2);
 
-console.log(carrier);
+// console.log(carrier.hit());
+// console.log(carrier.totalHits);
+
+export default Ship;
