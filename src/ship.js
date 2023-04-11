@@ -1,4 +1,5 @@
 const Ship = (name, length) => {
+  const shipLength = [...Array(length).keys()];
   let totalHits = 0;
 
   const hit = () => {
@@ -6,14 +7,16 @@ const Ship = (name, length) => {
     return totalHits;
   };
 
-  const isSunk = () => {};
+  const isSunk = () => {
+    // prevent players from playing same space twice.
+    if (totalHits !== shipLength.length) {
+      return false;
+    }
 
-  return { name, length, hit, totalHits };
+    return true;
+  };
+
+  return { name, shipLength, hit, totalHits, isSunk };
 };
-
-const carrier = Ship('carrier', 2);
-
-// console.log(carrier.hit());
-// console.log(carrier.totalHits);
 
 export default Ship;
