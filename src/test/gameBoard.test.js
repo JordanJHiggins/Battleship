@@ -1,4 +1,5 @@
 import GameBoard from '../gameBoard';
+import Ship from '../ship';
 
 test('game board is of defined size', () => {
   const gameBoard = GameBoard();
@@ -6,6 +7,24 @@ test('game board is of defined size', () => {
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  ]);
+});
+
+test('can place a ship at correct coordinates', () => {
+  const testBoard = GameBoard();
+  testBoard.createBoard();
+  const testShip = Ship('carrier', 4);
+  expect(testBoard.placeShip(testShip, 2, 4)).toEqual([
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [0, 1, 2, 3, 'carrier', 'carrier', 'carrier', 'carrier', 8, 9],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
