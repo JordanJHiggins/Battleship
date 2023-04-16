@@ -24,18 +24,26 @@ const GameBoard = () => {
     return board;
   };
 
-  const receiveAttack = () => {};
+  const receiveAttack = (coordA, coordB) => {
+    if (typeof board[coordA][coordB] !== 'string') {
+      return 'nope';
+    }
+
+    return board[coordA][coordB];
+  };
   const fleetSunk = () => {};
 
   return { placeShip, receiveAttack, fleetSunk, createBoard, board };
 };
 
 // Logic Testing
-// const testBoard = GameBoard();
-// const testShip = Ship('Dinghy', 4);
-// testBoard.createBoard();
-// testBoard.placeShip(testShip, 2, 4);
+const testBoard = GameBoard();
+const dinghy = Ship('dinghy', 4);
+testBoard.createBoard();
+testBoard.placeShip(dinghy, 2, 4);
 
-// console.log(testBoard.board);
+console.log(testBoard.receiveAttack(2, 4));
+console.log(dinghy);
+console.log(testBoard);
 
 export default GameBoard;

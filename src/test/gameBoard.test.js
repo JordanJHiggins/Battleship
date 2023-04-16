@@ -34,3 +34,11 @@ test('can place a ship at correct coordinates', () => {
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   ]);
 });
+test('can register a hit on the correct tile and ship', () => {
+  const testBoard = GameBoard();
+  const testShip = Ship('destroyer', 2);
+  testBoard.createBoard();
+  testBoard.placeShip(testShip, 4, 3);
+
+  expect(testBoard.receiveAttack(4, 3)).toEqual('destroyer');
+});
