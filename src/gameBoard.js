@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 // eslint-disable-next-line import/extensions
 import Ship from './ship.js';
 
@@ -5,31 +6,33 @@ const GameBoard = () => {
   const boardSize = 10;
   let missedAttack = 0;
   const board = [];
+  // Push placed ships to fleet array?
 
   const createBoard = () => {
-    // const board = [];
-    for (let i = 0; i < boardSize; i += 1) {
-      const innerArray = [...Array(boardSize).keys()];
+    for (let i = 0; i < boardSize; i++) {
+      const innerArray = new Array(boardSize).fill(null);
       board.push(innerArray);
     }
     return board;
   };
 
-  const placeShip = (shipObj, coordA, coordB) => {
+  const placeShip = (shipObj, x, y) => {
     const length = shipObj.shipLength;
 
-    if (board[coordA]) {
-      board[coordA].splice(coordB, length, ...shipObj.shipArray);
-    }
+    for (let i = 0; i < length; i++)
+      if (board[x][y + i] === null) {
+        board[x][y + i] = shipObj;
+        // board[coordA].splice(coordB, length, shipObj);
+      }
     return board;
   };
 
-  const receiveAttack = (coordA, coordB) => {
-    if (typeof board[coordA][coordB] !== 'string') {
+  const receiveAttack = (x, y) => {
+    const ship = board[x][y];
+    if (typeof ship !== 'object') {
       return 'nope';
     }
-
-    return board[coordA][coordB];
+    return board[x][y].hit();
   };
   const fleetSunk = () => {};
 
@@ -43,7 +46,7 @@ testBoard.createBoard();
 testBoard.placeShip(dinghy, 2, 4);
 
 console.log(testBoard.receiveAttack(2, 4));
-console.log(dinghy);
+console.log(testBoard.receiveAttack(2, 4));
 console.log(testBoard);
 
 export default GameBoard;
