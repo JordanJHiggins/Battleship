@@ -16,14 +16,20 @@ const GameBoard = () => {
     return board;
   };
 
-  const placeShip = (shipObj, x, y) => {
+  const placeShip = (shipObj, orientation, x, y) => {
     const length = shipObj.shipLength;
 
-    for (let i = 0; i < length; i++)
-      if (board[x][y + i] === null) {
-        board[x][y + i] = shipObj;
-        // board[coordA].splice(coordB, length, shipObj);
-      }
+    if (orientation === 'horizontal') {
+      for (let i = 0; i < length; i++)
+        if (board[x][y + i] === null) {
+          board[x][y + i] = shipObj;
+        }
+    } else if (orientation === 'vertical') {
+      for (let i = 0; i < length; i++)
+        if (board[x][y + i] === null) {
+          board[x + i][y] = shipObj;
+        }
+    }
     return board;
   };
 
@@ -43,7 +49,7 @@ const GameBoard = () => {
 const testBoard = GameBoard();
 const dinghy = Ship('dinghy', 4);
 testBoard.createBoard();
-testBoard.placeShip(dinghy, 2, 4);
+testBoard.placeShip(dinghy, 'vertical', 2, 4);
 
 console.log(testBoard.receiveAttack(2, 4));
 console.log(testBoard.receiveAttack(2, 4));
