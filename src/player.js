@@ -22,12 +22,18 @@ const Player = (name) => {
     // if (checkMove return
   };
 
-  const checkMove = () => {};
-  return { gameBoard, fleet, playerName };
+  const checkMove = (x, y, board) => {
+    if (
+      board.beenHit.forEach((coordPair) => {
+        if (coordPair[0] === x && coordPair[1] === y) {
+          return 'This space has already been hit';
+        }
+      })
+    )
+      return 'this space is Free';
+  };
+
+  return { gameBoard, fleet, playerName, checkMove };
 };
 
 const player1 = Player('player1');
-
-console.log(player1.gameBoard);
-console.log(player1.gameBoard.createBoard());
-console.log(player1.fleet.carrier);
