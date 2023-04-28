@@ -2,7 +2,7 @@ import Ship from '../ship';
 
 test('Has a defined length', () => {
   const testShip = Ship('carrier', 3);
-  expect(testShip.shipLength).toEqual([0, 1, 2]);
+  expect(testShip.shipLength).toEqual(['carrier', 'carrier', 'carrier']);
 });
 
 test('Should increment hit counter by 1 when hit', () => {

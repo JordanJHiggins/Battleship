@@ -4,9 +4,9 @@ import Ship from './ship.js';
 
 const GameBoard = () => {
   const boardSize = 10;
-  let missedAttack = 0;
+  const beenHit = [];
+  const missedHit = [];
   const board = [];
-  // Push placed ships to fleet array?
 
   const createBoard = () => {
     for (let i = 0; i < boardSize; i++) {
@@ -34,25 +34,25 @@ const GameBoard = () => {
   };
 
   const receiveAttack = (x, y) => {
-    const ship = board[x][y];
-    if (typeof ship !== 'object') {
-      return 'nope';
+    if (board[x][y] === null) {
+      missedHit.push([x, y]);
+      return false;
     }
-    return board[x][y].hit();
+    beenHit.push([x, y]);
+    board[x][y].hit();
+    return true;
   };
+
   const fleetSunk = () => {};
 
-  return { placeShip, receiveAttack, fleetSunk, createBoard, board };
+  return {
+    placeShip,
+    receiveAttack,
+    fleetSunk,
+    createBoard,
+    board,
+    beenHit,
+    missedHit,
+  };
 };
-
-// Logic Testing
-const testBoard = GameBoard();
-const dinghy = Ship('dinghy', 4);
-testBoard.createBoard();
-testBoard.placeShip(dinghy, 'vertical', 2, 4);
-
-console.log(testBoard.receiveAttack(2, 4));
-console.log(testBoard.receiveAttack(2, 4));
-console.log(testBoard);
-
 export default GameBoard;

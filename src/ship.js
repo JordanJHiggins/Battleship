@@ -1,22 +1,25 @@
 const Ship = (name, length) => {
-  const shipLength = [...Array(length).keys()];
+  const shipLength = length;
   let totalHits = 0;
 
   const hit = () => {
     totalHits += 1;
+
     return totalHits;
   };
 
+  const getTotalHits = () => totalHits;
+
   const isSunk = () => {
-    // prevent players from playing same space twice.
-    if (totalHits !== shipLength.length) {
+    // Rework this, push ship to sunk array if hits > shipLength?
+    if (totalHits !== shipLength) {
       return false;
     }
 
     return true;
   };
 
-  return { name, shipLength, hit, totalHits, isSunk };
+  return { name, shipLength, hit, totalHits, isSunk, getTotalHits };
 };
 
 export default Ship;
