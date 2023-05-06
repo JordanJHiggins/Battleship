@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const View = (playerName) => {
-  // const playerGrid = document.getElementById('player-grid');
+  const playerGrid = document.getElementById('player-grid');
   // const computerGrid = document.getElementById('computer-grid');
 
   const renderBoard = (grid) => {
@@ -22,10 +22,14 @@ const View = (playerName) => {
   // How to select adjacent tiles, increment Y coord?
   const renderShip = (ship) => {
     const currentGrid = document.querySelector('#player-grid');
+
     currentGrid.addEventListener('click', (e) => {
+      if (e.target.classList.contains('attack')) return;
       e.target.classList.add('attack');
+
       const siblings = e.target.parentElement.children;
       const index = Array.from(siblings).indexOf(e.target);
+
       for (
         let i = index + 1;
         i < index + ship.shipLength && i < siblings.length;
