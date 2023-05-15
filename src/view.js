@@ -18,15 +18,10 @@ const View = (playerName) => {
 
     // Check if the last cell in ships placement range wraps to next row.
     const lastCell = siblings[index + ship.shipLength - 1];
-    const lastCellY = lastCell.getAttribute('data-y-coordinate');
+    const lastXCell = lastCell.getAttribute('data-x-coordinate');
+    const prevXCell = event.target.getAttribute('data-x-coordinate');
 
-    if (
-      lastCellY === '0' ||
-      lastCellY === '1' ||
-      lastCellY === '2' ||
-      lastCellY === '3'
-    )
-      return false;
+    if (lastXCell !== prevXCell) return false;
 
     return true;
   };
