@@ -1,9 +1,10 @@
 /* eslint-disable no-plusplus */
 // eslint-disable-next-line import/extensions
 import Ship from './ship.js';
+import View from './view.js';
 
 const GameBoard = () => {
-  const boardSize = 10;
+  const boardSize = 100;
   const beenHit = [];
   const missedHit = [];
   const board = [];

@@ -12,7 +12,7 @@ const Player = (name) => {
     destroyer: Ship('destroyer', 2),
   };
 
-  const checkMove = (x, y, board) => {
+  const validateAttack = (x, y, board) => {
     if (
       board.beenHit.forEach((coordPair) => {
         if (coordPair[0] === x && coordPair[1] === y) {
@@ -24,21 +24,21 @@ const Player = (name) => {
   };
 
   const attack = (x, y, board) => {
-    if (checkMove(x, y, board) === false) gameBoard.receiveAttack(x, y);
+    if (validateAttack(x, y, board) === false) gameBoard.receiveAttack(x, y);
   };
 
   const randomAttack = (board) => {
     const randomX = Math.floor(Math.random() * (9 - 0 + 0) + 0);
     const randomY = Math.floor(Math.random() * (9 - 0 + 0) + 0);
 
-    if (checkMove(randomX, randomY, board) !== true) {
+    if (validateAttack(randomX, randomY, board) !== true) {
       return board.receiveAttack(randomX, randomY);
     }
 
     return board.missedHit();
   };
 
-  return { gameBoard, fleet, playerName, checkMove, attack, randomAttack };
+  return { gameBoard, fleet, playerName, validateAttack, attack, randomAttack };
 };
 
 export default Player;

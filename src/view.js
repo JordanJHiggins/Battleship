@@ -1,12 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const View = (playerName) => {
   const playerGrid = document.getElementById('player-grid');
-  // const computerGrid = document.getElementById('computer-grid');
 
   const validatePlacement = (event, ship) => {
     const siblings = event.target.parentElement.children;
     const index = Array.from(siblings).indexOf(event.target);
-
     // Check if cells in ships placement range already have 'attack' class.
     for (
       let i = index;
@@ -15,7 +13,6 @@ const View = (playerName) => {
     ) {
       if (siblings[i].classList.contains('attack')) return false;
     }
-
     // Check if the last cell in ships placement range wraps to next row.
     const lastCell = siblings[index + ship.shipLength - 1];
     const lastXCell = lastCell.getAttribute('data-x-coordinate');
@@ -29,7 +26,7 @@ const View = (playerName) => {
   const renderBoard = (grid) => {
     const currentGrid = document.getElementById(grid);
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i += 1) {
       const row = parseInt(i / 10, 10);
       const col = i % 10;
 
@@ -57,7 +54,7 @@ const View = (playerName) => {
       for (
         let i = index + 1;
         i < index + ship.shipLength && i < siblings.length;
-        i++
+        i += 1
       ) {
         siblings[i].classList.add('attack');
       }
